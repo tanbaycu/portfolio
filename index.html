@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>tanbaycu - Developer</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+            rel="stylesheet">
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+        <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+        <style>
+        .gradient-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #23a6d5, #23d5ab);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            transform-origin: center center;
+        }
+
+        .hero-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hover-effect {
+            transition: all 0.3s ease;
+        }
+
+        .hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        #header {
+            /* Prevent content from going under header */
+            height: 64px; /* Matches h-16 */
+        }
+        
+        /* Ensure content starts below header */
+        main {
+            padding-top: 64px; /* Same as header height */
+        }
+        
+        /* Mobile Menu Animation */
+        #mobileMenu.menu-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        #mobileMenu.menu-open .mobile-link {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        /* Staggered animation for mobile menu links */
+        #mobileMenu .mobile-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #mobileMenu .mobile-link:nth-child(1) { transition-delay: 0.1s; }
+        #mobileMenu .mobile-link:nth-child(2) { transition-delay: 0.15s; }
+        #mobileMenu .mobile-link:nth-child(3) { transition-delay: 0.2s; }
+        #mobileMenu .mobile-link:nth-child(4) { transition-delay: 0.25s; }
+        #mobileMenu .mobile-link:nth-child(5) { transition-delay: 0.3s; }
+        
+        /* Prevent scrolling when mobile menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+        
+        /* Container Max Width */
+        .container {
+            max-width: 1920px !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 64px; /* Matches header height */
+        }
+    </style>
+    </head>
+    <body class="bg-black text-white overflow-x-hidden">
+        <header
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+            id="header">
+            <!-- Add margin-top to your first content section to prevent header overlap -->
+            <div
+                class="w-full px-4 sm:px-6 lg:px-8 bg-gray-900/80 backdrop-blur-lg">
+                <nav class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="#" class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 p-0.5">
+                                <div
+                                    class="w-full h-full rounded-[10px] bg-gray-900 flex items-center justify-center">
+                                    <span
+                                        class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                                        T
+                                    </span>
+                                </div>
+                            </div>
+                            <span
+                                class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                                tanbaycu
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex md:items-center md:space-x-8">
+                        <a href="#"
+                            class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Home</a>
+                        <a href="#projects"
+                            class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Projects</a>
+                        <a href="#skills-section"
+                            class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Skills</a>
+                        <a href="#experience-section"
+                            class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Experience</a>
+                        <a href="#contact"
+                            class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Contact</a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="flex items-center md:hidden">
+                        <button id="mobileMenuBtn"
+                            class="p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300"
+                            aria-label="Toggle menu"
+                            aria-expanded="false">
+                            <i class="ph ph-list text-2xl text-gray-300"></i>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Mobile Menu - Improved with slide animation -->
+            <div id="mobileMenu"
+                class="fixed inset-0 bg-gray-900/95 backdrop-blur-lg transition-all duration-300 opacity-0 pointer-events-none md:hidden"
+                aria-hidden="true">
+                <div
+                    class="flex flex-col items-center justify-center min-h-screen space-y-8">
+                    <a href="#"
+                        class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Home</a>
+                    <a href="#projects"
+                        class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Projects</a>
+                    <a href="#skills-section"
+                        class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Skills</a>
+                    <a href="#experience-section"
+                        class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Experience</a>
+                    <a href="#contact"
+                        class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Contact</a>
+                </div>
+            </div>
+        </header>
+        <!-- Particles Container -->
+        <div id="particles" class="fixed inset-0 z-0"></div>
+
+        <!-- Hero Section -->
+        <section
+            class="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <!-- Gradient Background -->
+            <div class="absolute inset-0 gradient-bg opacity-20"></div>
+
+            <!-- Main Content -->
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Hero Card -->
+                    <div
+                        class="hero-card relative rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 text-center md:text-left bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-lg border border-white/10"
+                        data-aos="fade-up" data-aos-duration="1000">
+
+                        <!-- Background Effects -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-3xl"></div>
+                        <div
+                            class="absolute -z-10 blur-[100px] bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full w-[200px] h-[200px] top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"></div>
+
+                        <!-- Content Container -->
+                        <div class="relative z-10">
+                            <!-- Role Badge -->
+                            <div class="mb-10 inline-block" data-aos="fade-down"
+                                data-aos-delay="200">
+                                <span
+                                    class="group relative text-xl font-extrabold px-6 py-3 rounded-full border border-white/30 bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-[0_0_25px_rgba(139,92,246,0.5)] transition-all duration-500 hover:shadow-[0_0_35px_rgba(139,92,246,0.8)]">
+                                    <span
+                                        class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                                    <span class="relative">Full-Stack
+                                        Developer</span>
+                                </span>
+                            </div>
+
+                            <!-- Main Title with Enhanced Animation -->
+                            <h1
+                                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight"
+                                data-aos="fade-up" data-aos-delay="400">
+                                Xin chào, tôi là
+                                <span class="relative inline-block">
+                                    <span
+                                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
+                           animate-gradient-x hover:animate-pulse transition-all duration-500">
+                                        tanbaycu
+                                    </span>
+                                    <span
+                                        class="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 opacity-30 blur-xl"></span>
+                                </span>
+                            </h1>
+
+                            <!-- Description with Enhanced Typography -->
+                            <p
+                                class="text-xl md:text-2xl text-gray-300/90 mb-12 max-w-2xl mx-auto md:mx-0 leading-relaxed"
+                                data-aos="fade-up" data-aos-delay="600">
+                                Fix bug gì chưa người đẹp?
+                            </p>
+
+                            <!-- Enhanced CTA Buttons -->
+                            <div
+                                class="flex flex-col sm:flex-row gap-6 justify-center md:justify-start"
+                                data-aos="fade-up" data-aos-delay="800">
+                                <!-- Projects Button -->
+                                <a href="#projects"
+                                    class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-500 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(139,92,246,0.5)]">
+                                    <span
+                                        class="absolute inset-0 w-full h-full bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+                                    <span
+                                        class="relative z-10 flex items-center">
+                                        Xem dự án
+                                        <svg
+                                            class="w-5 h-5 ml-2 transform transition-transform duration-500 group-hover:translate-x-1"
+                                            fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                        </svg>
+                                    </span>
+                                </a>
+
+                                <!-- Contact Button -->
+                                <a href="#contact"
+                                    class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-purple-500 transition-all duration-500 bg-white/10 backdrop-blur-sm border-2 border-purple-500/50 rounded-full overflow-hidden hover:text-white hover:border-purple-600 hover:shadow-[0_0_25px_rgba(139,92,246,0.3)]">
+                                    <span
+                                        class="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+                                    <span
+                                        class="relative z-10 flex items-center">
+                                        Liên hệ
+                                        <svg
+                                            class="w-5 h-5 ml-2 transform transition-all duration-500 group-hover:rotate-45"
+                                            fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+
+                            <!-- Enhanced Tech Stack -->
+                            <div
+                                class="mt-16 flex flex-wrap gap-8 justify-center md:justify-start items-center"
+                                data-aos="fade-up" data-aos-delay="1000">
+                                <div
+                                    class="tech-stack-grid grid grid-cols-3 sm:grid-cols-6 gap-8">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                        alt="React"
+                                        class="w-10 h-10 transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(97,218,251,0.8)]">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                                        alt="Python"
+                                        class="w-10 h-10 transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(255,223,89,0.8)]">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                        alt="HTML"
+                                        class="w-10 h-10 transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(227,79,38,0.8)]">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                        alt="CSS"
+                                        class="w-10 h-10 transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(21,114,182,0.8)]">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                        alt="JavaScript"
+                                        class="w-10 h-10 transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(247,223,30,0.8)]">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"
+                                        alt="SCSS"
+                                        class="w-10 h-10 transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(204,102,153,0.8)]">
+                                </div>
+                                <span
+                                    class="text-sm text-gray-400/80 font-medium ml-2 hover:text-gray-300 transition-colors duration-300">
+                                    + nhiều công nghệ khác
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <style>
+@keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 15s ease infinite;
+}
+
+.tech-stack-grid img {
+    filter: grayscale(20%);
+    opacity: 0.8;
+}
+
+.tech-stack-grid img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+</style>
+                    <section
+                        class="py-24 relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800">
+                        <!-- Background Effects -->
+                        <div
+                            class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(51,65,85,0.1)_0,rgba(17,24,39,0)_100%)]"></div>
+                        <div class="absolute w-full h-full">
+                            <div
+                                class="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-blob"></div>
+                            <div
+                                class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+                        </div>
+
+                        <div class="container mx-auto px-4 relative z-10">
+                            <!-- Section Header -->
+                            <div class="max-w-4xl mx-auto mb-20 text-center"
+                                data-aos="fade-up">
+                                <h2 id="projects"
+                                    class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 relative inline-block">
+                                    <span
+                                        class="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+                                        Dự Án Nổi Bật
+                                    </span>
+                                    <div
+                                        class="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 opacity-30 blur-xl">
+                                    </div>
+                                </h2>
+                                <p
+                                    class="text-gray-400 text-lg md:text-xl leading-relaxed">
+                                    Khám phá những dự án tôi đã thực hiện với
+                                    đam mê và sáng tạo
+                                </p>
+                            </div>
+
+                            <!-- Projects Grid -->
+                            <div
+                                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                                <!-- Project Card 1 -->
+                                <div class="group relative" data-aos="fade-up"
+                                    data-aos-delay="100">
+                                    <div
+                                        class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                        <!-- Project Image -->
+                                        <div
+                                            class="relative overflow-hidden rounded-xl mb-6 aspect-video">
+                                            <img
+                                                src="https://i.postimg.cc/SKhFj79x/image.png"
+                                                alt="Python CLI Project"
+                                                class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+
+                                            <!-- Tech Stack Tags -->
+                                            <div
+                                                class="absolute top-4 right-4 flex flex-wrap gap-2 transition-transform duration-500 group-hover:translate-y-1">
+                                                <span
+                                                    class="px-3 py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-blue-300 border border-blue-500/20">
+                                                    HTML/TailwindCSS
+                                                </span>
+                                                <span
+                                                    class="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-purple-300 border border-purple-500/20">
+                                                    Javascript/Python
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Project Info -->
+                                        <div class="space-y-4">
+                                            <h3
+                                                class="text-2xl font-bold group-hover:text-purple-400 transition-colors duration-300">
+                                                Python CLI
+                                            </h3>
+                                            <p
+                                                class="text-gray-400 line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
+                                                Giả lập IDE chạy Python trên
+                                                web, hỗ trợ xử lý lỗi và hiển
+                                                thị cho các dòng lệnh cơ bản có
+                                                tích hợp trò chuyện với AI.
+                                            </p>
+
+                                            <!-- Project Links -->
+                                            <div class="flex gap-4 pt-2">
+                                                <a
+                                                    href="https://github.com/tanbaycu"
+                                                    class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                    <svg
+                                                        class="w-5 h-5 transition-transform duration-300 group-hover/link:scale-110"
+                                                        viewBox="0 0 24 24"
+                                                        fill="currentColor">
+                                                        <path
+                                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                                    </svg>
+                                                    Source Code
+                                                </a>
+                                                <a
+                                                    href="https://python-cli-webapp.vercel.app"
+                                                    class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                    <svg
+                                                        class="w-5 h-5 transition-transform duration-300 group-hover/link:rotate-45"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                    </svg>
+                                                    Live Demo
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Project Card 2 -->
+                                <div class="group relative" data-aos="fade-up"
+                                    data-aos-delay="200">
+                                    <div
+                                        class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                        <div
+                                            class="relative overflow-hidden rounded-xl mb-6 aspect-video">
+                                            <img
+                                                src="https://i.postimg.cc/SKhFj79x/image.png"
+                                                alt="ChatBot Developer Project"
+                                                class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+
+                                            <div
+                                                class="absolute top-4 right-4 flex flex-wrap gap-2 transition-transform duration-500 group-hover:translate-y-1">
+                                                <span
+                                                    class="px-3 py-1 bg-green-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-green-300 border border-green-500/20">
+                                                    Python
+                                                </span>
+                                                <span
+                                                    class="px-3 py-1 bg-yellow-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-yellow-300 border border-yellow-500/20">
+                                                    SQLite3
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <h3
+                                                class="text-2xl font-bold group-hover:text-purple-400 transition-colors duration-300">
+                                                ChatBot Developer
+                                            </h3>
+                                            <p
+                                                class="text-gray-400 line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
+                                                Chat Bot tích hợp AI với nhiều
+                                                chức năng đa dạng và nổi bật
+                                                trên các nền tảng Telegram,
+                                                Discord, Messenger.
+                                            </p>
+
+                                            <div class="flex gap-4 pt-2">
+                                                <a
+                                                    href="https://linktr.ee/chatbottelegram"
+                                                    class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                    <svg
+                                                        class="w-5 h-5 transition-transform duration-300 group-hover/link:scale-110"
+                                                        viewBox="0 0 24 24"
+                                                        fill="currentColor">
+                                                        <path
+                                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                                    </svg>
+                                                    Source Code
+                                                </a>
+                                                <a
+                                                    href="https://t.me/tanbaycu_bot"
+                                                    class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                    <svg
+                                                        class="w-5 h-5 transition-transform duration-300 group-hover/link:rotate-45"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                    </svg>
+                                                    Live Demo
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Project Card 3 (New) -->
+                                <div class="group relative" data-aos="fade-up"
+                                    data-aos-delay="300">
+                                    <div
+                                        class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                        <div
+                                            class="relative overflow-hidden rounded-xl mb-6 aspect-video">
+                                            <img
+                                                src="https://i.postimg.cc/SKhFj79x/image.png"
+                                                alt="AI Assistant Project"
+                                                class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+
+                                            <div
+                                                class="absolute top-4 right-4 flex flex-wrap gap-2 transition-transform duration-500 group-hover:translate-y-1">
+                                                <span
+                                                    class="px-3 py-1 bg-indigo-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-indigo-300 border border-indigo-500/20">
+                                                    React/Next.js
+                                                </span>
+                                                <span
+                                                    class="px-3 py-1 bg-pink-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-pink-300 border border-pink-500/20">
+                                                    OpenAI API
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <h3
+                                                class="text-2xl font-bold group-hover:text-purple-400 transition-colors duration-300">
+                                                AI Assistant
+                                            </h3>
+                                            <p
+                                                class="text-gray-400 line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
+                                                Trợ lý AI thông minh với khả
+                                                năng chat, phân tích dữ liệu và
+                                                tạo nội dung tự động sử dụng
+                                                OpenAI API.
+                                            </p>
+
+                                            <div class="flex gap-4 pt-2">
+                                                <a href="#"
+                                                    class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                    <svg
+                                                        class="w-5 h-5 transition-transform duration-300 group-hover/link:scale-110"
+                                                        viewBox="0 0 24 24"
+                                                        fill="currentColor">
+                                                        <path
+                                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                                    </svg>
+                                                    Source Code
+                                                </a>
+                                                <a href="#"
+                                                    class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                    <svg
+                                                        class="w-5 h-5 transition-transform duration-300 group-hover/link:rotate-45"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                    </svg>
+                                                    Live Demo
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <style>
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, transparent, rgba(168,85,247,0.1), transparent);
+    z-index: -1;
+    border-radius: inherit;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+</style>
+
+                    <!-- Skills & Expertise -->
+                    <!-- Skills & Technologies Section -->
+                    <section
+                        class="py-24 relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800"
+                        aria-labelledby="skills-section">
+                        <!-- SEO Meta Tags -->
+                        <meta name="description"
+                            content="Professional skills and technologies including React, Python, JavaScript, HTML, CSS and more">
+                        <meta name="keywords"
+                            content="web development, programming skills, frontend, backend, full-stack developer">
+
+                        <!-- Background Effects -->
+                        <div
+                            class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(51,65,85,0.1)_0,rgba(17,24,39,0)_100%)]"></div>
+                        <div class="absolute w-full h-full">
+                            <div
+                                class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-blob"></div>
+                            <div
+                                class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+                        </div>
+
+                        <div class="container mx-auto px-4 relative z-10">
+                            <!-- Section Header -->
+                            <div class="max-w-4xl mx-auto mb-20 text-center"
+                                data-aos="fade-up">
+                                <h2 id="skills-section"
+                                    class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 relative inline-block">
+                                    <span
+                                        class="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+                                        Kỹ Năng & Công Nghệ
+                                    </span>
+                                    <div
+                                        class="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 opacity-30 blur-xl"></div>
+                                </h2>
+                                <p
+                                    class="text-gray-400 text-lg md:text-xl leading-relaxed">
+                                    Các kỹ năng và công nghệ chuyên môn trong
+                                    phát triển phần mềm
+                                </p>
+                            </div>
+
+                            <!-- Skills Grid -->
+                            <div
+                                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                                <!-- Frontend Development -->
+                                <div class="skill-category group"
+                                    data-aos="fade-up" data-aos-delay="100">
+                                    <div
+                                        class="relative p-6 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                   transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                   hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                        <div class="relative z-10">
+                                            <h3
+                                                class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                                                Frontend Development
+                                            </h3>
+                                            <div class="space-y-4">
+                                                <div
+                                                    class="skill-item group/item">
+                                                    <div
+                                                        class="flex justify-between items-center mb-2">
+                                                        <span
+                                                            class="font-medium text-gray-300 group-hover/item:text-purple-400 transition-colors duration-300">React.js</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">90%</span>
+                                                    </div>
+                                                    <div
+                                                        class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div
+                                                            class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-[90%] rounded-full 
+                                       transform origin-left transition-transform duration-500 scale-x-0 group-hover/item:scale-x-100"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="skill-item group/item">
+                                                    <div
+                                                        class="flex justify-between items-center mb-2">
+                                                        <span
+                                                            class="font-medium text-gray-300 group-hover/item:text-purple-400 transition-colors duration-300">JavaScript</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">85%</span>
+                                                    </div>
+                                                    <div
+                                                        class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div
+                                                            class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-[85%] rounded-full 
+                                       transform origin-left transition-transform duration-500 scale-x-0 group-hover/item:scale-x-100"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="skill-item group/item">
+                                                    <div
+                                                        class="flex justify-between items-center mb-2">
+                                                        <span
+                                                            class="font-medium text-gray-300 group-hover/item:text-purple-400 transition-colors duration-300">HTML/CSS</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">95%</span>
+                                                    </div>
+                                                    <div
+                                                        class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div
+                                                            class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-[95%] rounded-full 
+                                       transform origin-left transition-transform duration-500 scale-x-0 group-hover/item:scale-x-100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Backend Development -->
+                                <div class="skill-category group"
+                                    data-aos="fade-up" data-aos-delay="200">
+                                    <div
+                                        class="relative p-6 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                   transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                   hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                        <div class="relative z-10">
+                                            <h3
+                                                class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                                                Backend Development
+                                            </h3>
+                                            <div class="space-y-4">
+                                                <div
+                                                    class="skill-item group/item">
+                                                    <div
+                                                        class="flex justify-between items-center mb-2">
+                                                        <span
+                                                            class="font-medium text-gray-300 group-hover/item:text-purple-400 transition-colors duration-300">Python</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">88%</span>
+                                                    </div>
+                                                    <div
+                                                        class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div
+                                                            class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-[88%] rounded-full 
+                                       transform origin-left transition-transform duration-500 scale-x-0 group-hover/item:scale-x-100"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="skill-item group/item">
+                                                    <div
+                                                        class="flex justify-between items-center mb-2">
+                                                        <span
+                                                            class="font-medium text-gray-300 group-hover/item:text-purple-400 transition-colors duration-300">Node.js</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">82%</span>
+                                                    </div>
+                                                    <div
+                                                        class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div
+                                                            class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-[82%] rounded-full 
+                                       transform origin-left transition-transform duration-500 scale-x-0 group-hover/item:scale-x-100"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="skill-item group/item">
+                                                    <div
+                                                        class="flex justify-between items-center mb-2">
+                                                        <span
+                                                            class="font-medium text-gray-300 group-hover/item:text-purple-400 transition-colors duration-300">SQL</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">85%</span>
+                                                    </div>
+                                                    <div
+                                                        class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div
+                                                            class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-[85%] rounded-full 
+                                       transform origin-left transition-transform duration-500 scale-x-0 group-hover/item:scale-x-100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Other Skills -->
+                                <div class="skill-category group"
+                                    data-aos="fade-up" data-aos-delay="300">
+                                    <div
+                                        class="relative p-6 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                   transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                   hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                        <div class="relative z-10">
+                                            <h3
+                                                class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                                                Other Skills
+                                            </h3>
+                                            <div class="space-y-4">
+                                                <div
+                                                    class="skill-item group/item">
+                                                    <div
+                                                        class="flex justify-between items-center mb-2">
+                                                        <span
+                                                            class="font-medium text-gray-300 group-hover/item:text-purple-400 transition-colors duration-300">Git</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">90%</span>
+                                                    </div>
+                                                    <div
+                                                        class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div
+                                                            class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-[90%] rounded-full 
+                                       transform origin-left transition-transform duration-500 scale-x-0 group-hover/item:scale-x-100"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="skill-item group/item">
+                                                    <div
+                                                        class="flex justify-between items-center mb-2">
+                                                        <span
+                                                            class="font-medium text-gray-300 group-hover/item:text-purple-400 transition-colors duration-300">UI/UX
+                                                            Design</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">80%</span>
+                                                    </div>
+                                                    <div
+                                                        class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div
+                                                            class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-[80%] rounded-full 
+                                       transform origin-left transition-transform duration-500 scale-x-0 group-hover/item:scale-x-100"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="skill-item group/item">
+                                                    <div
+                                                        class="flex justify-between items-center mb-2">
+                                                        <span
+                                                            class="font-medium text-gray-300 group-hover/item:text-purple-400 transition-colors duration-300">DevOps</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">75%</span>
+                                                    </div>
+                                                    <div
+                                                        class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div
+                                                            class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-[75%] rounded-full 
+                                       transform origin-left transition-transform duration-500 scale-x-0 group-hover/item:scale-x-100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tools Section -->
+                            <div class="max-w-4xl mx-auto mb-16 text-center"
+                                data-aos="fade-up">
+                                <h3
+                                    class="text-3xl md:text-4xl font-bold mb-6 relative inline-block">
+                                    <span
+                                        class="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+                                        Công Cụ & Nền Tảng
+                                    </span>
+                                    <div
+                                        class="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 opacity-30 blur-xl"></div>
+                                </h3>
+                                <p
+                                    class="text-gray-400 text-lg leading-relaxed mb-12">
+                                    Các công cụ và nền tảng tôi sử dụng hàng
+                                    ngày
+                                </p>
+
+                                <!-- Tools Grid -->
+                                <div
+                                    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8"
+                                    data-aos="fade-up" data-aos-delay="200">
+                                    <!-- VSCode -->
+                                    <div class="tool-item group">
+                                        <div
+                                            class="relative p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                       transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                       hover:shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                                            <img
+                                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                                                alt="VSCode"
+                                                class="w-12 h-12 mx-auto mb-3 transition-all duration-300 group-hover:scale-110">
+                                            <p
+                                                class="text-sm font-medium text-gray-400 group-hover:text-purple-400 transition-colors duration-300">VSCode</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- GitHub -->
+                                    <div class="tool-item group">
+                                        <div
+                                            class="relative p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                       transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                       hover:shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                                            <img
+                                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                                                alt="GitHub"
+                                                class="w-12 h-12 mx-auto mb-3 transition-all duration-300 group-hover:scale-110">
+                                            <p
+                                                class="text-sm font-medium text-gray-400 group-hover:text-purple-400 transition-colors duration-300">GitHub</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- WebStorm -->
+                                    <div class="tool-item group">
+                                        <div
+                                            class="relative p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                       transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                       hover:shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                                            <img
+                                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webstorm/webstorm-original.svg"
+                                                alt="WebStorm"
+                                                class="w-12 h-12 mx-auto mb-3 transition-all duration-300 group-hover:scale-110">
+                                            <p
+                                                class="text-sm font-medium text-gray-400 group-hover:text-purple-400 transition-colors duration-300">WebStorm</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Windows -->
+                                    <div class="tool-item group">
+                                        <div
+                                            class="relative p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                       transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                       hover:shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                                            <img
+                                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg"
+                                                alt="Windows"
+                                                class="w-12 h-12 mx-auto mb-3 transition-all duration-300 group-hover:scale-110">
+                                            <p
+                                                class="text-sm font-medium text-gray-400 group-hover:text-purple-400 transition-colors duration-300">Windows</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Google -->
+                                    <div class="tool-item group">
+                                        <div
+                                            class="relative p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                       transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                       hover:shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                                            <img
+                                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                                                alt="Google"
+                                                class="w-12 h-12 mx-auto mb-3 transition-all duration-300 group-hover:scale-110">
+                                            <p
+                                                class="text-sm font-medium text-gray-400 group-hover:text-purple-400 transition-colors duration-300">Google</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Spotify -->
+                                    <div class="tool-item group">
+                                        <div
+                                            class="relative p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                       transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                       hover:shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                                            <svg
+                                                class="w-12 h-12 mx-auto mb-3 text-green-500 transition-all duration-300 group-hover:scale-110"
+                                                viewBox="0 0 24 24"
+                                                fill="currentColor">
+                                                <path
+                                                    d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                                            </svg>
+                                            <p
+                                                class="text-sm font-medium text-gray-400 group-hover:text-purple-400 transition-colors duration-300">Spotify</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <style>
+@keyframes blob {
+0% { transform: translate(0px, 0px) scale(1); }
+33% { transform: translate(30px, -50px) scale(1.1); }
+66% { transform: translate(-20px, 20px) scale(0.9); }
+100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+animation-delay: 2s;
+}
+
+.skill-category:hover .skill-item {
+opacity: 0.5;
+}
+
+.skill-category .skill-item:hover {
+opacity: 1;
+}
+
+.tool-item img, .tool-item svg {
+filter: grayscale(20%);
+opacity: 0.8;
+}
+
+.tool-item:hover img, .tool-item:hover svg {
+filter: grayscale(0%);
+opacity: 1;
+}
+</style>
+
+                    <section
+                        class="py-24 relative overflow-hidden bg-gradient-to-b from-gray-800 to-gray-900"
+                        aria-labelledby="experience-section">
+                        <!-- SEO Meta Tags -->
+                        <meta name="description"
+                            content="Professional work experience as Full Stack Developer with expertise in React, Python, and more">
+                        <meta name="keywords"
+                            content="work experience, frontend developer, full stack developer, web development">
+
+                        <!-- Background Effects -->
+                        <div
+                            class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(51,65,85,0.1)_0,rgba(17,24,39,0)_100%)]"></div>
+                        <div class="absolute w-full h-full">
+                            <div
+                                class="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-blob"></div>
+                            <div
+                                class="absolute bottom-1/3 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+                        </div>
+
+                        <div class="container mx-auto px-4 relative z-10">
+                            <div class="max-w-4xl mx-auto">
+                                <!-- Section Header -->
+                                <div class="text-center mb-16"
+                                    data-aos="fade-up">
+                                    <h2 id="experience-section"
+                                        class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 relative inline-block">
+                                        <span
+                                            class="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+                                            Kinh Nghiệm Làm Việc
+                                        </span>
+                                        <div
+                                            class="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 opacity-30 blur-xl"></div>
+                                    </h2>
+                                    <p
+                                        class="text-gray-400 text-lg md:text-xl leading-relaxed">
+                                        Hành trình phát triển chuyên môn của tôi
+                                    </p>
+                                </div>
+
+                                <!-- Experience Timeline -->
+                                <div class="relative space-y-8">
+                                    <!-- Timeline Line -->
+                                    <div
+                                        class="absolute left-0 md:left-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 transform -translate-x-1/2"></div>
+
+                                    <!-- Experience Item 1 -->
+                                    <div class="relative group"
+                                        data-aos="fade-up">
+                                        <!-- Timeline Dot -->
+                                        <div
+                                            class="absolute left-0 md:left-1/2 w-4 h-4 bg-purple-500 rounded-full transform -translate-x-1/2 
+                                border-2 border-purple-300 transition-transform duration-300 group-hover:scale-150"></div>
+
+                                        <!-- Content Card -->
+                                        <div
+                                            class="ml-6 md:ml-0 md:w-1/2 md:pr-8 md:text-right md:transform md:-translate-x-4 group-even:md:ml-auto group-even:md:pl-8 group-even:md:pr-0 group-even:md:text-left group-even:md:translate-x-4">
+                                            <div
+                                                class="relative p-6 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                  transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                                  hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                                <!-- Card Header -->
+                                                <div
+                                                    class="flex flex-col gap-2 mb-6">
+                                                    <div
+                                                        class="flex items-center justify-between flex-wrap gap-4">
+                                                        <h3
+                                                            class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                                                            Junior Frontend
+                                                            Developer
+                                                        </h3>
+                                                        <span
+                                                            class="text-sm font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/20">
+                                                            Tháng 8/2024 -
+                                                            1/2025
+                                                        </span>
+                                                    </div>
+                                                    <div
+                                                        class="flex items-center gap-2 text-purple-400">
+                                                        <svg class="w-5 h-5"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                                        </svg>
+                                                        <span
+                                                            class="font-medium">tanbaycu
+                                                            Inc</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Responsibilities -->
+                                                <ul class="space-y-4">
+                                                    <li
+                                                        class="flex items-start gap-3 group/item">
+                                                        <svg
+                                                            class="w-6 h-6 text-green-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover/item:scale-125"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                        <span
+                                                            class="text-gray-300 group-hover/item:text-gray-200 transition-colors duration-300">
+                                                            Làm quen với lập
+                                                            trình web và phát
+                                                            triển chatbot.
+                                                        </span>
+                                                    </li>
+                                                    <li
+                                                        class="flex items-start gap-3 group/item">
+                                                        <svg
+                                                            class="w-6 h-6 text-green-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover/item:scale-125"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                        <span
+                                                            class="text-gray-300 group-hover/item:text-gray-200 transition-colors duration-300">
+                                                            Tối ưu dự án web với
+                                                            SEO, responsive mẫu
+                                                            mực.
+                                                        </span>
+                                                    </li>
+                                                    <li
+                                                        class="flex items-start gap-3 group/item">
+                                                        <svg
+                                                            class="w-6 h-6 text-green-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover/item:scale-125"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                        <span
+                                                            class="text-gray-300 group-hover/item:text-gray-200 transition-colors duration-300">
+                                                            Sử dụng localStorage
+                                                            cho việc lưu trữ dữ
+                                                            liêu tạm thời. Bước
+                                                            đầu làm quen với
+                                                            SQLite3.
+                                                        </span>
+                                                    </li>
+                                                </ul>
+
+                                                <!-- Technologies Used -->
+                                                <div
+                                                    class="mt-6 flex flex-wrap gap-2">
+                                                    <span
+                                                        class="px-3 py-1 text-sm rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/20">HTML/CSS</span>
+                                                    <span
+                                                        class="px-3 py-1 text-sm rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/20">JavaScript</span>
+                                                    <span
+                                                        class="px-3 py-1 text-sm rounded-full bg-green-500/20 text-green-400 border border-green-500/20">SQLite3</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Experience Item 2 -->
+                                    <div class="relative group"
+                                        data-aos="fade-up" data-aos-delay="100">
+                                        <!-- Timeline Dot -->
+                                        <div
+                                            class="absolute left-0 md:left-1/2 w-4 h-4 bg-purple-500 rounded-full transform -translate-x-1/2 
+                                border-2 border-purple-300 transition-transform duration-300 group-hover:scale-150"></div>
+
+                                        <!-- Content Card -->
+                                        <div
+                                            class="ml-6 md:ml-auto md:w-1/2 md:pl-8 md:text-left md:transform md:translate-x-4">
+                                            <div
+                                                class="relative p-6 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                  transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                                  hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                                <!-- Card Header -->
+                                                <div
+                                                    class="flex flex-col gap-2 mb-6">
+                                                    <div
+                                                        class="flex items-center justify-between flex-wrap gap-4">
+                                                        <h3
+                                                            class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                                                            Full Stack Developer
+                                                        </h3>
+                                                        <span
+                                                            class="text-sm font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/20">
+                                                            2025 - Hiện tại
+                                                        </span>
+                                                    </div>
+                                                    <div
+                                                        class="flex items-center gap-2 text-purple-400">
+                                                        <svg class="w-5 h-5"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                                        </svg>
+                                                        <span
+                                                            class="font-medium">tanbaycu
+                                                            Inc</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Responsibilities -->
+                                                <ul class="space-y-4">
+                                                    <li
+                                                        class="flex items-start gap-3 group/item">
+                                                        <svg
+                                                            class="w-6 h-6 text-green-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover/item:scale-125"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                        <span
+                                                            class="text-gray-300 group-hover/item:text-gray-200 transition-colors duration-300">
+                                                            Xây dựng giao diện
+                                                            web kết hợp xử lý từ
+                                                            backend, các giao
+                                                            thức nâng cao với
+                                                            Python thông qua
+                                                            Flask.
+                                                        </span>
+                                                    </li>
+                                                    <li
+                                                        class="flex items-start gap-3 group/item">
+                                                        <svg
+                                                            class="w-6 h-6 text-green-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover/item:scale-125"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                        <span
+                                                            class="text-gray-300 group-hover/item:text-gray-200 transition-colors duration-300">
+                                                            Phát triển frontend
+                                                            với React và NextJS.
+                                                        </span>
+                                                    </li>
+                                                    <li
+                                                        class="flex items-start gap-3 group/item">
+                                                        <svg
+                                                            class="w-6 h-6 text-green-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover/item:scale-125"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                        <span
+                                                            class="text-gray-300 group-hover/item:text-gray-200 transition-colors duration-300">
+                                                            Triển khai và quản
+                                                            lý cơ sở dữ liệu
+                                                            MongoDB.
+                                                        </span>
+                                                    </li>
+                                                </ul>
+
+                                                <!-- Technologies Used -->
+                                                <div
+                                                    class="mt-6 flex flex-wrap gap-2">
+                                                    <span
+                                                        class="px-3 py-1 text-sm rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/20">React</span>
+                                                    <span
+                                                        class="px-3 py-1 text-sm rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/20">Next.js</span>
+                                                    <span
+                                                        class="px-3 py-1 text-sm rounded-full bg-green-500/20 text-green-400 border border-green-500/20">Python</span>
+                                                    <span
+                                                        class="px-3 py-1 text-sm rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/20">MongoDB</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <style>
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 0;
+    }
+    .timeline-content {
+        margin-left: 2rem;
+    }
+}
+</style>
+
+                    <!-- Contact Section -->
+                    <section id="contact"
+                        class="py-24 relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800"
+                        aria-labelledby="contact-section">
+                        <!-- SEO Meta Tags -->
+                        <meta name="description"
+                            content="Get in touch for collaboration, freelance projects or any inquiries">
+                        <meta name="keywords"
+                            content="contact, email, location, freelance, collaboration">
+
+                        <!-- Background Effects -->
+                        <div
+                            class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(51,65,85,0.1)_0,rgba(17,24,39,0)_100%)]"></div>
+                        <div class="absolute w-full h-full">
+                            <div
+                                class="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-blob"></div>
+                            <div
+                                class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+                        </div>
+
+                        <div class="container mx-auto px-4 relative z-10">
+                            <div class="max-w-5xl mx-auto">
+                                <!-- Section Header -->
+                                <div class="text-center mb-16"
+                                    data-aos="fade-up">
+                                    <h2 id="contact-section"
+                                        class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 relative inline-block">
+                                        <span
+                                            class="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+                                            Liên Hệ
+                                        </span>
+                                        <div
+                                            class="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 opacity-30 blur-xl"></div>
+                                    </h2>
+                                    <p
+                                        class="text-gray-400 text-lg md:text-xl leading-relaxed">
+                                        Hãy kết nối và bắt đầu dự án tuyệt vời
+                                        cùng nhau
+                                    </p>
+                                </div>
+
+                                <div class="grid lg:grid-cols-2 gap-12">
+                                    <!-- Left Column: Contact Info & Social -->
+                                    <div class="space-y-8">
+                                        <!-- Contact Cards -->
+                                        <div class="space-y-6">
+                                            <!-- Email Card -->
+                                            <div class="group relative"
+                                                data-aos="fade-up"
+                                                data-aos-delay="100">
+                                                <div
+                                                    class="relative p-6 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                                          transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                                                          hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                                    <div
+                                                        class="flex items-center gap-4">
+                                                        <div
+                                                            class="p-3 rounded-xl bg-blue-500/10 text-blue-400 group-hover:scale-110 transition-transform duration-300">
+                                                            <svg class="w-8 h-8"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            <h3
+                                                                class="text-lg font-semibold mb-1 text-gray-200">Email</h3>
+                                                            <a
+                                                                href="mailto:tanbaycu@gmail.com"
+                                                                class="text-blue-400 hover:text-blue-300 transition-colors duration-300 flex items-center gap-2">
+                                                                tanbaycu@gmail.com
+                                                                <svg
+                                                                    class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    viewBox="0 0 24 24">
+                                                                    <path
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Location Card -->
+                                            <div class="group relative"
+                                                data-aos="fade-up"
+                                                data-aos-delay="200">
+                                                <div
+                                                    class="relative p-6 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                                          transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                                                          hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                                    <div
+                                                        class="flex items-center gap-4">
+                                                        <div
+                                                            class="p-3 rounded-xl bg-purple-500/10 text-purple-400 group-hover:scale-110 transition-transform duration-300">
+                                                            <svg class="w-8 h-8"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            <h3
+                                                                class="text-lg font-semibold mb-1 text-gray-200">Địa
+                                                                điểm</h3>
+                                                            <p
+                                                                class="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                                                                Ho Chi Minh
+                                                                City, Vietnam
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Availability Card -->
+                                            <div class="group relative"
+                                                data-aos="fade-up"
+                                                data-aos-delay="300">
+                                                <div
+                                                    class="relative p-6 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                                          transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                                                          hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                                    <div
+                                                        class="flex items-center gap-4">
+                                                        <div
+                                                            class="p-3 rounded-xl bg-green-500/10 text-green-400 group-hover:scale-110 transition-transform duration-300">
+                                                            <svg class="w-8 h-8"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            <h3
+                                                                class="text-lg font-semibold mb-1 text-gray-200">Trạng
+                                                                thái</h3>
+                                                            <p
+                                                                class="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                                                                Sẵn sàng nhận dự
+                                                                án freelance
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Social Media Links -->
+                                        <div class="space-y-4"
+                                            data-aos="fade-up"
+                                            data-aos-delay="400">
+                                            <h3
+                                                class="text-xl font-semibold text-gray-200">Kết
+                                                nối với tôi</h3>
+                                            <div class="flex flex-wrap gap-4">
+                                                <a href="#"
+                                                    class="social-link group">
+                                                    <div
+                                                        class="p-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                                              transition-all duration-300 hover:bg-gray-700/50 hover:border-blue-500/50 
+                                                              hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                                                        <svg
+                                                            class="w-6 h-6 text-blue-400"
+                                                            fill="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                                <a href="#"
+                                                    class="social-link group">
+                                                    <div
+                                                        class="p-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                                              transition-all duration-300 hover:bg-gray-700/50 hover:border-blue-400/50 
+                                                              hover:shadow-[0_0_15px_rgba(96,165,250,0.5)]">
+                                                        <svg
+                                                            class="w-6 h-6 text-blue-400"
+                                                            fill="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                                <a href="#"
+                                                    class="social-link group">
+                                                    <div
+                                                        class="p-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                                              transition-all duration-300 hover:bg-gray-700/50 hover:border-purple-500/50 
+                                                              hover:shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+                                                        <svg
+                                                            class="w-6 h-6 text-purple-400"
+                                                            fill="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M12 0C5.374 0 0 5.374 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                                <a href="#"
+                                                    class="social-link group">
+                                                    <div
+                                                        class="p-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                                              transition-all duration-300 hover:bg-gray-700/50 hover:border-blue-500/50 
+                                                              hover:shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                                                        <svg
+                                                            class="w-6 h-6 text-blue-600"
+                                                            fill="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right Column: Contact Form -->
+                                    <div class="relative" data-aos="fade-up"
+                                        data-aos-delay="500">
+                                        <div
+                                            class="relative p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+                                                  transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 
+                                                  hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                            <form class="space-y-6">
+                                                <div class="form-group">
+                                                    <label for="name"
+                                                        class="block mb-2 text-sm font-medium text-gray-300">Họ
+                                                        và tên</label>
+                                                    <input type="text" id="name"
+                                                        required
+                                                        class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-gray-200 
+                                                                  placeholder-gray-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 
+                                                                  transition-all duration-300">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email"
+                                                        class="block mb-2 text-sm font-medium text-gray-300">Email</label>
+                                                    <input type="email"
+                                                        id="email" required
+                                                        class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-gray-200 
+                                                                  placeholder-gray-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 
+                                                                  transition-all duration-300">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="subject"
+                                                        class="block mb-2 text-sm font-medium text-gray-300">Chủ
+                                                        đề</label>
+                                                    <input type="text"
+                                                        id="subject" required
+                                                        class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-gray-200 
+                                                                  placeholder-gray-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 
+                                                                  transition-all duration-300">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message"
+                                                        class="block mb-2 text-sm font-medium text-gray-300">Tin
+                                                        nhắn</label>
+                                                    <textarea id="message"
+                                                        rows="5" required
+                                                        class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-gray-200 
+                                                                     placeholder-gray-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 
+                                                                     transition-all duration-300 resize-none"></textarea>
+                                                </div>
+                                                <button type="submit"
+                                                    class="w-full px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl 
+                                                               font-medium text-white transition-all duration-300 transform hover:scale-[0.98] 
+                                                               hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] focus:outline-none focus:ring-2 
+                                                               focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                                                    <span
+                                                        class="flex items-center justify-center gap-2">
+                                                        Gửi tin nhắn
+                                                        <svg class="w-5 h-5"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <style>
+                    @keyframes blob {
+                        0% { transform: translate(0px, 0px) scale(1); }
+                        33% { transform: translate(30px, -50px) scale(1.1); }
+                        66% { transform: translate(-20px, 20px) scale(0.9); }
+                        100% { transform: translate(0px, 0px) scale(1); }
+                    }
+                    
+                    .animate-blob {
+                        animation: blob 7s infinite;
+                    }
+                    
+                    .animation-delay-2000 {
+                        animation-delay: 2s;
+                    }
+                    
+                    .form-group input:focus::placeholder,
+                    .form-group textarea:focus::placeholder {
+                        opacity: 0.5;
+                        transform: translateX(10px);
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .social-link:hover svg {
+                        transform: scale(1.1);
+                        transition: transform 0.3s ease;
+                    }
+                    </style>
+
+                    <!-- Footer -->
+                    <footer
+                        class="py-16 relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-950">
+                        <!-- Background Effects -->
+                        <div
+                            class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(51,65,85,0.1)_0,rgba(17,24,39,0)_100%)]"></div>
+
+                        <!-- Main Footer -->
+                        <div class="container mx-auto px-4 relative z-10">
+                            <div class="max-w-7xl mx-auto">
+                                <!-- Top Section -->
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 pb-16 border-b border-gray-800/50">
+                                    <!-- Brand Section -->
+                                    <div class="space-y-6">
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 p-0.5">
+                                                <div
+                                                    class="w-full h-full rounded-[10px] bg-gray-900 flex items-center justify-center">
+                                                    <span
+                                                        class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">T</span>
+                                                </div>
+                                            </div>
+                                            <h3
+                                                class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                                                tanbaycu
+                                            </h3>
+                                        </div>
+                                        <p
+                                            class="text-gray-400 leading-relaxed">
+                                            Full Stack Developer & Chatbot AI
+                                            Experience. Chuyên gia về phát triển
+                                            web và trí tuệ nhân tạo.
+                                        </p>
+                                        <div class="flex gap-4">
+                                            <a
+                                                href="https://github.com/tanbaycu"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="group p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300">
+                                                <svg
+                                                    class="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors duration-300"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 0C5.374 0 0 5.374 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                                                </svg>
+                                            </a>
+                                            <a
+                                                href="https://facebook.com/tanbaycu.kaiser"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="group p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300">
+                                                <svg
+                                                    class="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors duration-300"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                                                </svg>
+                                            </a>
+                                            <a
+                                                href="https://instagram.com/tanbaycu"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="group p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300">
+                                                <svg
+                                                    class="w-5 h-5 text-gray-400 group-hover:text-pink-400 transition-colors duration-300"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Quick Links -->
+                                    <div>
+                                        <h4
+                                            class="text-lg font-semibold text-gray-200 mb-6">Quick
+                                            Links</h4>
+                                        <ul class="space-y-4">
+                                            <li>
+                                                <a href="#about"
+                                                    class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2">
+                                                    <svg class="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                    About Me
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#projects"
+                                                    class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2">
+                                                    <svg class="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                    Projects
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#skills"
+                                                    class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2">
+                                                    <svg class="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                    Skills
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#contact"
+                                                    class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2">
+                                                    <svg class="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                    Contact
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Services -->
+                                    <div>
+                                        <h4
+                                            class="text-lg font-semibold text-gray-200 mb-6">Services</h4>
+                                        <ul class="space-y-4">
+                                            <li>
+                                                <a href="#"
+                                                    class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2">
+                                                    <svg class="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                    Web Development
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2">
+                                                    <svg class="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                    AI Integration
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2">
+                                                    <svg class="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                    Chatbot Development
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2">
+                                                    <svg class="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                    Consulting
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Newsletter -->
+                                    <div>
+                                        <h4
+                                            class="text-lg font-semibold text-gray-200 mb-6">Newsletter</h4>
+                                        <p class="text-gray-400 mb-4">Subscribe
+                                            to receive updates and exclusive
+                                            content.</p>
+                                        <form class="space-y-4">
+                                            <div class="relative">
+                                                <input type="email"
+                                                    placeholder="Enter your email"
+                                                    required
+                                                    class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-gray-200 
+                                                              placeholder-gray-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 
+                                                              transition-all duration-300">
+                                            </div>
+                                            <button type="submit"
+                                                class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl 
+                                                           font-medium text-white transition-all duration-300 transform hover:scale-[0.98] 
+                                                           hover:shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+                                                Subscribe
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Section -->
+                                <div
+                                    class="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm">
+                                    <div class="flex items-center gap-2">
+                                        <span>© 2024</span>
+                                        <span
+                                            class="text-purple-400">tanbaycu</span>
+                                        <span>All rights reserved.</span>
+                                    </div>
+                                    <div class="flex items-center gap-6">
+                                        <a href="#"
+                                            class="hover:text-purple-400 transition-colors duration-300">Privacy
+                                            Policy</a>
+                                        <a href="#"
+                                            class="hover:text-purple-400 transition-colors duration-300">Terms
+                                            of Service</a>
+                                        <a href="#"
+                                            class="hover:text-purple-400 transition-colors duration-300">Cookie
+                                            Policy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+
+                    <style>
+                    @keyframes gradientFlow {
+                        0% { background-position: 0% 50%; }
+                        50% { background-position: 100% 50%; }
+                        100% { background-position: 0% 50%; }
+                    }
+                    
+                    .gradient-border {
+                        position: relative;
+                        background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+                        background-size: 200% 200%;
+                        animation: gradientFlow 5s ease infinite;
+                    }
+                    </style>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div
+                class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </section>
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Particle Effect
+        function createParticle() {
+            const particles = document.getElementById('particles');
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random size between 2-6px
+            const size = Math.random() * 4 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random position
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            
+            // Animation
+            particle.style.animation = `float ${Math.random() * 3 + 2}s linear infinite`;
+            
+            particles.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 5000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 100);
+
+        // Mouse follow effect
+        document.addEventListener('mousemove', (e) => {
+            createParticleAtPosition(e.clientX, e.clientY);
+        });
+
+        function createParticleAtPosition(x, y) {
+            const particles = document.getElementById('particles');
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            const size = Math.random() * 3 + 1;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            
+            particle.style.animation = 'float 1s linear forwards';
+            
+            particles.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        }
+        function setupMobileMenu() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            
+            function toggleMenu() {
+                const isOpen = mobileMenu.classList.contains('menu-open');
+                
+                // Toggle menu state
+                mobileMenu.classList.toggle('menu-open');
+                document.body.classList.toggle('menu-open');
+                menuBtn.setAttribute('aria-expanded', !isOpen);
+                
+                // Update menu button icon
+                menuBtn.innerHTML = isOpen 
+                    ? '<i class="ph ph-list text-2xl text-gray-300"></i>'
+                    : '<i class="ph ph-x text-2xl text-gray-300"></i>';
+            }
+            
+            // Toggle menu on button click
+            menuBtn.addEventListener('click', toggleMenu);
+            
+            // Close menu when clicking a link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    toggleMenu();
+                    
+                    // Smooth scroll to section
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        const element = document.querySelector(href);
+                        if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+            
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('menu-open')) {
+                    toggleMenu();
+                }
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupMobileMenu();
+        });
+    </script>
+    </body>
+</html>
