@@ -18,7 +18,7 @@
     <meta property="og:image" content="https://i.postimg.cc/dVCNvs4Z/t.png" />
     <meta property="og:url" content="https://tanbaycu.vercel.app" />
     <meta name="twitter:title" content="tanbaycu - Full-Stack Developer"" />
-    <meta name=" twitter:description" content="Khám phá các dự án, kỹ năng và kinh nghiệm của tanbaycu." />
+        <meta name=" twitter:description" content="Khám phá các dự án, kỹ năng và kinh nghiệm của tanbaycu." />
     <meta name="twitter:image" content="https://i.postimg.cc/dVCNvs4Z/t.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -46,7 +46,7 @@
     <meta property="og:image:type" content="image/png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="tanbaycu - Full-Stack Developer"" />
-    <meta name=" twitter:description" content="Khám phá các dự án, kỹ năng và kinh nghiệm của tanbaycu." />
+        <meta name=" twitter:description" content="Khám phá các dự án, kỹ năng và kinh nghiệm của tanbaycu." />
     <meta name="twitter:image" content="https://i.postimg.cc/dVCNvs4Z/t.png" />
     <link rel="alternate" hreflang="vi-VN" href="https://tanbaycu.vercel.app" />
     <link rel="icon" type="image/png" href="https://i.postimg.cc/dVCNvs4Z/t.png" />
@@ -234,8 +234,8 @@
 
 <body class="bg-black text-white overflow-x-hidden">
     <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="header">
-        <!-- Add margin-top to your first content section to prevent header overlap -->
-        <div class="w-full px-4 sm:px-6 lg:px-8 bg-gray-900/80 backdrop-blur-lg">
+        <!-- Main Header -->
+        <div class="w-full px-4 sm:px-6 lg:px-8 transition-all duration-300" id="headerBackground">
             <nav class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
@@ -256,47 +256,333 @@
                 </div>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Home</a>
-                    <a href="#projects"
-                        class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Projects</a>
-                    <a href="#skills-section"
-                        class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Skills</a>
-                    <a href="#experience-section"
-                        class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Experience</a>
-                    <a href="#contact"
-                        class="text-gray-300 hover:text-purple-400 transition-colors duration-300">Contact</a>
+                <div class="hidden md:flex md:items-center">
+                    <nav class="flex space-x-1">
+                        <a href="#" class="nav-link group relative px-4 py-2 transition-all duration-300">
+                            <span
+                                class="relative z-10 text-gray-300 group-hover:text-white transition-colors duration-300">Home</span>
+                            <span
+                                class="absolute inset-0 bg-purple-600/0 group-hover:bg-purple-600/10 rounded-lg transition-all duration-300"></span>
+                        </a>
+                        <a href="#projects" class="nav-link group relative px-4 py-2 transition-all duration-300">
+                            <span
+                                class="relative z-10 text-gray-300 group-hover:text-white transition-colors duration-300">Projects</span>
+                            <span
+                                class="absolute inset-0 bg-purple-600/0 group-hover:bg-purple-600/10 rounded-lg transition-all duration-300"></span>
+                        </a>
+                        <a href="#skills-section" class="nav-link group relative px-4 py-2 transition-all duration-300">
+                            <span
+                                class="relative z-10 text-gray-300 group-hover:text-white transition-colors duration-300">Skills</span>
+                            <span
+                                class="absolute inset-0 bg-purple-600/0 group-hover:bg-purple-600/10 rounded-lg transition-all duration-300"></span>
+                        </a>
+                        <a href="#experience-section"
+                            class="nav-link group relative px-4 py-2 transition-all duration-300">
+                            <span
+                                class="relative z-10 text-gray-300 group-hover:text-white transition-colors duration-300">Experience</span>
+                            <span
+                                class="absolute inset-0 bg-purple-600/0 group-hover:bg-purple-600/10 rounded-lg transition-all duration-300"></span>
+                        </a>
+                        <a href="#contact" class="nav-link group relative px-4 py-2 transition-all duration-300">
+                            <span
+                                class="relative z-10 text-gray-300 group-hover:text-white transition-colors duration-300">Contact</span>
+                            <span
+                                class="absolute inset-0 bg-purple-600/0 group-hover:bg-purple-600/10 rounded-lg transition-all duration-300"></span>
+                        </a>
+                    </nav>
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <div class="flex items-center md:hidden">
                     <button id="mobileMenuBtn"
-                        class="p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300"
+                        class="p-2 rounded-lg hover:bg-gray-800/50 transition-all duration-300 focus:outline-none"
                         aria-label="Toggle menu" aria-expanded="false">
-                        <i class="ph ph-list text-2xl text-gray-300"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-300" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
                     </button>
                 </div>
             </nav>
         </div>
 
-        <!-- Mobile Menu - Improved with slide animation -->
-        <div id="mobileMenu"
-            class="fixed inset-0 bg-gray-900/95 backdrop-blur-lg transition-all duration-300 opacity-0 pointer-events-none md:hidden"
-            aria-hidden="true">
-            <div class="flex flex-col items-center justify-center min-h-screen space-y-8">
-                <a href="#"
-                    class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Home</a>
-                <a href="#projects"
-                    class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Projects</a>
-                <a href="#skills-section"
-                    class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Skills</a>
-                <a href="#experience-section"
-                    class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Experience</a>
-                <a href="#contact"
-                    class="mobile-link text-2xl font-medium text-gray-300 hover:text-purple-400 transition-colors duration-300 transform translate-x-10 opacity-0">Contact</a>
+        <!-- Mobile Menu - Drawer Style -->
+        <div id="mobileMenu" class="fixed inset-0 pointer-events-none md:hidden z-50">
+            <!-- Backdrop với độ mờ và blur được điều chỉnh -->
+            <div class="absolute inset-0 bg-gray-900/80 backdrop-blur-md opacity-0 transition-opacity duration-300"
+                id="menuBackdrop"></div>
+
+            <!-- Drawer với gradient và shadow -->
+            <div class="absolute top-0 right-0 w-[300px] h-full transform translate-x-full transition-transform duration-300 ease-out shadow-2xl"
+                id="menuDrawer">
+                <!-- Gradient background wrapper -->
+                <div
+                    class="relative w-full h-full bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 backdrop-blur-xl">
+                    <!-- Glass effect overlay -->
+                    <div class="absolute inset-0 bg-white/5"></div>
+
+                    <!-- Border light effect -->
+                    <div
+                        class="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/10 via-white/5 to-transparent">
+                    </div>
+
+                    <!-- Content wrapper -->
+                    <div class="relative h-full flex flex-col">
+                        <!-- Close Button với hiệu ứng hover tốt hơn -->
+                        <div class="absolute top-4 right-4 z-50">
+                            <button id="closeMenuBtn"
+                                class="p-2 rounded-lg hover:bg-white/10 transition-all duration-300 focus:outline-none group">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-6 w-6 text-gray-400 group-hover:text-white transition-colors duration-300"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Menu Content với spacing tốt hơn -->
+                        <div class="h-full flex flex-col pt-20 pb-6 px-6">
+                            <!-- Navigation Links với hiệu ứng hover nổi bật -->
+                            <nav class="flex-1 space-y-2">
+                                <a href="#"
+                                    class="mobile-link group flex items-center p-3 rounded-lg transition-all duration-300 transform translate-x-10 opacity-0 hover:bg-white/10">
+                                    <span
+                                        class="text-gray-100 group-hover:text-white font-medium transition-colors duration-300">Home</span>
+                                    <span
+                                        class="ml-auto opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <a href="#projects"
+                                    class="mobile-link group flex items-center p-3 rounded-lg transition-all duration-300 transform translate-x-10 opacity-0 hover:bg-white/10">
+                                    <span
+                                        class="text-gray-100 group-hover:text-white font-medium transition-colors duration-300">Projects</span>
+                                    <span
+                                        class="ml-auto opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <a href="#skills-section"
+                                    class="mobile-link group flex items-center p-3 rounded-lg transition-all duration-300 transform translate-x-10 opacity-0 hover:bg-white/10">
+                                    <span
+                                        class="text-gray-100 group-hover:text-white font-medium transition-colors duration-300">Skills</span>
+                                    <span
+                                        class="ml-auto opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <a href="#experience-section"
+                                    class="mobile-link group flex items-center p-3 rounded-lg transition-all duration-300 transform translate-x-10 opacity-0 hover:bg-white/10">
+                                    <span
+                                        class="text-gray-100 group-hover:text-white font-medium transition-colors duration-300">Experience</span>
+                                    <span
+                                        class="ml-auto opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <a href="#contact"
+                                    class="mobile-link group flex items-center p-3 rounded-lg transition-all duration-300 transform translate-x-10 opacity-0 hover:bg-white/10">
+                                    <span
+                                        class="text-gray-100 group-hover:text-white font-medium transition-colors duration-300">Contact</span>
+                                    <span
+                                        class="ml-auto opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </nav>
+
+                            <!-- Social Links với hiệu ứng đẹp hơn -->
+                            <div class="pt-6 mt-6 border-t border-white/10">
+                                <div class="flex justify-center space-x-4">
+                                    <a href="#"
+                                        class="p-2 text-gray-400 hover:text-white transition-colors duration-300 hover:bg-white/10 rounded-lg group">
+                                        <svg class="w-6 h-6 transform group-hover:scale-110 transition-transform duration-300"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                        </svg>
+                                    </a>
+                                    <a href="#"
+                                        class="p-2 text-gray-400 hover:text-white transition-colors duration-300 hover:bg-white/10 rounded-lg group">
+                                        <svg class="w-6 h-6 transform group-hover:scale-110 transition-transform duration-300"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                        </svg>
+                                    </a>
+                                    <a href="#"
+                                        class="p-2 text-gray-400 hover:text-white transition-colors duration-300 hover:bg-white/10 rounded-lg group">
+                                        <svg class="w-6 h-6 transform group-hover:scale-110 transition-transform duration-300"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
+
+    <!-- Scroll to top button -->
+    <button id="scrollToTopBtn"
+        class="fixed bottom-6 right-6 p-3 rounded-full bg-purple-600/80 text-white shadow-lg z-40 opacity-0 invisible transition-all duration-300 hover:bg-purple-700/80">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.getElementById('header');
+            const headerBg = document.getElementById('headerBackground');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuDrawer = document.getElementById('menuDrawer');
+            const menuBackdrop = document.getElementById('menuBackdrop');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let lastScrollTop = 0;
+            const scrollThreshold = 100;
+
+            // Add padding to the first section
+            const firstSection = document.querySelector('main') || document.querySelector('section');
+            if (firstSection) {
+                firstSection.style.paddingTop = `${header.offsetHeight}px`;
+            }
+
+            // Handle scroll events
+            window.addEventListener('scroll', function () {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                // Change header background on scroll
+                if (scrollTop > scrollThreshold) {
+                    headerBg.classList.add('bg-gray-900/95', 'backdrop-blur-md', 'border-b', 'border-gray-800/50');
+                } else {
+                    headerBg.classList.remove('bg-gray-900/95', 'backdrop-blur-md', 'border-b', 'border-gray-800/50');
+                }
+
+                // Hide/show header based on scroll direction
+                if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+
+                // Show/hide scroll to top button
+                if (scrollTop > window.innerHeight / 2) {
+                    scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                    scrollToTopBtn.classList.add('opacity-100', 'visible');
+                } else {
+                    scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                    scrollToTopBtn.classList.remove('opacity-100', 'visible');
+                }
+
+                lastScrollTop = scrollTop;
+            });
+
+            // Toggle mobile menu
+            function toggleMobileMenu(show) {
+                mobileMenu.classList.toggle('pointer-events-none', !show);
+                menuBackdrop.classList.toggle('opacity-0', !show);
+                menuDrawer.style.transform = show ? 'translateX(0)' : 'translateX(100%)';
+                document.body.style.overflow = show ? 'hidden' : '';
+
+                if (show) {
+                    // Animate links
+                    mobileLinks.forEach((link, index) => {
+                        setTimeout(() => {
+                            link.classList.remove('translate-x-10', 'opacity-0');
+                        }, 300 + (index * 100));
+                    });
+                } else {
+                    mobileLinks.forEach(link => {
+                        link.classList.add('translate-x-10', 'opacity-0');
+                    });
+                }
+            }
+
+            mobileMenuBtn.addEventListener('click', () => toggleMobileMenu(true));
+            closeMenuBtn.addEventListener('click', () => toggleMobileMenu(false));
+            menuBackdrop.addEventListener('click', () => toggleMobileMenu(false));
+
+            // Close mobile menu when clicking a link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => toggleMobileMenu(false));
+            });
+
+            // Scroll to top button
+            scrollToTopBtn.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Highlight active nav link
+            function highlightNavLink() {
+                const scrollPosition = window.scrollY;
+
+                document.querySelectorAll('section[id]').forEach(section => {
+                    const sectionTop = section.offsetTop - header.offsetHeight - 20;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                                link.querySelector('span').classList.add('text-purple-400');
+                            } else {
+                                link.classList.remove('active');
+                                link.querySelector('span').classList.remove('text-purple-400');
+                            }
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', highlightNavLink);
+
+            // Handle keyboard navigation
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !mobileMenu.classList.contains('pointer-events-none')) {
+                    toggleMobileMenu(false);
+                }
+            });
+
+            // Initial call to set correct states
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
     <!-- Particles Container -->
     <div id="particles" class="fixed inset-0 z-0"></div>
 
@@ -481,12 +767,14 @@
                         </div>
 
                         <!-- Projects Grid -->
+                        <!-- Improved Project Grid with Modal Functionality -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                             <!-- Project Card 1 -->
-                            <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                            <div class="group relative project-item" data-aos="fade-up" data-aos-delay="100"
+                                data-project-id="1">
                                 <div
                                     class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
-                            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
                                     <!-- Project Image -->
                                     <div class="relative overflow-hidden rounded-xl mb-6 aspect-video">
                                         <img src="https://i.postimg.cc/SKhFj79x/image.png" alt="Python CLI Project"
@@ -545,17 +833,28 @@
                                                 Live Demo
                                             </a>
                                         </div>
+
+                                        <!-- View Details Button -->
+                                        <button class="view-details-btn mt-4 w-full py-2 rounded-lg bg-purple-600/20 text-purple-400 border border-purple-600/30 
+                    hover:bg-purple-600/30 transition-all duration-300 flex items-center justify-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                            Xem chi tiết
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Project Card 2 -->
-                            <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+                            <div class="group relative project-item" data-aos="fade-up" data-aos-delay="200"
+                                data-project-id="2">
                                 <div
                                     class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
-                            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
                                     <div class="relative overflow-hidden rounded-xl mb-6 aspect-video">
-                                        <img src="https://i.postimg.cc/SKhFj79x/image.png"
+                                        <img src="https://i.postimg.cc/8CYTtgtk/image.png"
                                             alt="ChatBot Developer Project"
                                             class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
                                         <div
@@ -609,17 +908,28 @@
                                                 Live Demo
                                             </a>
                                         </div>
+
+                                        <!-- View Details Button -->
+                                        <button class="view-details-btn mt-4 w-full py-2 rounded-lg bg-purple-600/20 text-purple-400 border border-purple-600/30 
+                    hover:bg-purple-600/30 transition-all duration-300 flex items-center justify-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                            Xem chi tiết
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Project Card 3 (New) -->
-                            <div class="group relative" data-aos="fade-up" data-aos-delay="300">
+                            <!-- Project Card 3 -->
+                            <div class="group relative project-item" data-aos="fade-up" data-aos-delay="300"
+                                data-project-id="3">
                                 <div
                                     class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
-                            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
                                     <div class="relative overflow-hidden rounded-xl mb-6 aspect-video">
-                                        <img src="https://i.postimg.cc/SKhFj79x/image.png" alt="AI Assistant Project"
+                                        <img src="https://i.postimg.cc/kGm3pJ8C/image.png" alt="AI Assistant Project"
                                             class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
                                         <div
                                             class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500">
@@ -672,10 +982,566 @@
                                                 Live Demo
                                             </a>
                                         </div>
+
+                                        <!-- View Details Button -->
+                                        <button class="view-details-btn mt-4 w-full py-2 rounded-lg bg-purple-600/20 text-purple-400 border border-purple-600/30 
+                    hover:bg-purple-600/30 transition-all duration-300 flex items-center justify-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                            Xem chi tiết
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Card 4 (New) -->
+                            <div class="group relative project-item" data-aos="fade-up" data-aos-delay="400"
+                                data-project-id="4">
+                                <div
+                                    class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                    <div class="relative overflow-hidden rounded-xl mb-6 aspect-video">
+                                        <img src="https://i.postimg.cc/02KDf9nj/image.png" alt="E-Commerce Platform"
+                                            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-4 right-4 flex flex-wrap gap-2 transition-transform duration-500 group-hover:translate-y-1">
+                                            <span
+                                                class="px-3 py-1 bg-red-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-red-300 border border-red-500/20">
+                                                PHP/Laravel
+                                            </span>
+                                            <span
+                                                class="px-3 py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-blue-300 border border-blue-500/20">
+                                                MySQL
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <h3
+                                            class="text-2xl font-bold group-hover:text-purple-400 transition-colors duration-300">
+                                            E-Commerce Platform
+                                        </h3>
+                                        <p
+                                            class="text-gray-400 line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
+                                            Nền tảng thương mại điện tử đầy
+                                            đủ tính năng với hệ thống thanh
+                                            toán, quản lý đơn hàng và tích
+                                            hợp API giao hàng.
+                                        </p>
+
+                                        <div class="flex gap-4 pt-2">
+                                            <a href="#"
+                                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                <svg class="w-5 h-5 transition-transform duration-300 group-hover/link:scale-110"
+                                                    viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                                </svg>
+                                                Source Code
+                                            </a>
+                                            <a href="#"
+                                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                <svg class="w-5 h-5 transition-transform duration-300 group-hover/link:rotate-45"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                </svg>
+                                                Live Demo
+                                            </a>
+                                        </div>
+
+                                        <!-- View Details Button -->
+                                        <button class="view-details-btn mt-4 w-full py-2 rounded-lg bg-purple-600/20 text-purple-400 border border-purple-600/30 
+                    hover:bg-purple-600/30 transition-all duration-300 flex items-center justify-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                            Xem chi tiết
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Card 5 (New) -->
+                            <div class="group relative project-item" data-aos="fade-up" data-aos-delay="500"
+                                data-project-id="5">
+                                <div
+                                    class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                    <div class="relative overflow-hidden rounded-xl mb-6 aspect-video">
+                                        <img src="https://i.postimg.cc/yxk92Kzf/image.png" alt="Mobile App Development"
+                                            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-4 right-4 flex flex-wrap gap-2 transition-transform duration-500 group-hover:translate-y-1">
+                                            <span
+                                                class="px-3 py-1 bg-cyan-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-cyan-300 border border-cyan-500/20">
+                                                React Native
+                                            </span>
+                                            <span
+                                                class="px-3 py-1 bg-orange-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-orange-300 border border-orange-500/20">
+                                                Firebase
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <h3
+                                            class="text-2xl font-bold group-hover:text-purple-400 transition-colors duration-300">
+                                            Fitness Tracker App
+                                        </h3>
+                                        <p
+                                            class="text-gray-400 line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
+                                            Ứng dụng di động theo dõi sức
+                                            khỏe và tập luyện với tính năng
+                                            đặt mục tiêu, theo dõi tiến độ
+                                            và phân tích dữ liệu.
+                                        </p>
+
+                                        <div class="flex gap-4 pt-2">
+                                            <a href="#"
+                                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                <svg class="w-5 h-5 transition-transform duration-300 group-hover/link:scale-110"
+                                                    viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                                </svg>
+                                                Source Code
+                                            </a>
+                                            <a href="#"
+                                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                <svg class="w-5 h-5 transition-transform duration-300 group-hover/link:rotate-45"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                </svg>
+                                                Live Demo
+                                            </a>
+                                        </div>
+
+                                        <!-- View Details Button -->
+                                        <button class="view-details-btn mt-4 w-full py-2 rounded-lg bg-purple-600/20 text-purple-400 border border-purple-600/30 
+                    hover:bg-purple-600/30 transition-all duration-300 flex items-center justify-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                            Xem chi tiết
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Card 6 (New) -->
+                            <div class="group relative project-item" data-aos="fade-up" data-aos-delay="600"
+                                data-project-id="6">
+                                <div
+                                    class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                    <div class="relative overflow-hidden rounded-xl mb-6 aspect-video">
+                                        <img src="https://i.postimg.cc/d1WrW1gk/image.png"
+                                            alt="Data Analytics Dashboard"
+                                            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-4 right-4 flex flex-wrap gap-2 transition-transform duration-500 group-hover:translate-y-1">
+                                            <span
+                                                class="px-3 py-1 bg-emerald-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-emerald-300 border border-emerald-500/20">
+                                                Python/Django
+                                            </span>
+                                            <span
+                                                class="px-3 py-1 bg-amber-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-amber-300 border border-amber-500/20">
+                                                D3.js
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <h3
+                                            class="text-2xl font-bold group-hover:text-purple-400 transition-colors duration-300">
+                                            Data Analytics Dashboard
+                                        </h3>
+                                        <p
+                                            class="text-gray-400 line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
+                                            Bảng điều khiển phân tích dữ
+                                            liệu với biểu đồ tương tác, báo
+                                            cáo tự động và khả năng xuất dữ
+                                            liệu đa định dạng.
+                                        </p>
+
+                                        <div class="flex gap-4 pt-2">
+                                            <a href="#"
+                                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                <svg class="w-5 h-5 transition-transform duration-300 group-hover/link:scale-110"
+                                                    viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                                </svg>
+                                                Source Code
+                                            </a>
+                                            <a href="#"
+                                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                <svg class="w-5 h-5 transition-transform duration-300 group-hover/link:rotate-45"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                </svg>
+                                                Live Demo
+                                            </a>
+                                        </div>
+
+                                        <!-- View Details Button -->
+                                        <button class="view-details-btn mt-4 w-full py-2 rounded-lg bg-purple-600/20 text-purple-400 border border-purple-600/30 
+                    hover:bg-purple-600/30 transition-all duration-300 flex items-center justify-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                            Xem chi tiết
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Card 7 (New) -->
+                            <div class="group relative project-item" data-aos="fade-up" data-aos-delay="700"
+                                data-project-id="7">
+                                <div
+                                    class="project-card relative rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 
+            transition-all duration-500 hover:bg-gray-700/50 hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.1)]">
+                                    <div class="relative overflow-hidden rounded-xl mb-6 aspect-video">
+                                        <img src="https://i.postimg.cc/DwKJPLmp/image.png" alt="Blockchain Application"
+                                            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500">
+                                        </div>
+
+                                        <div
+                                            class="absolute top-4 right-4 flex flex-wrap gap-2 transition-transform duration-500 group-hover:translate-y-1">
+                                            <span
+                                                class="px-3 py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-blue-300 border border-blue-500/20">
+                                                Solidity
+                                            </span>
+                                            <span
+                                                class="px-3 py-1 bg-teal-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-teal-300 border border-teal-500/20">
+                                                Web3.js
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <h3
+                                            class="text-2xl font-bold group-hover:text-purple-400 transition-colors duration-300">
+                                            NFT Marketplace
+                                        </h3>
+                                        <p
+                                            class="text-gray-400 line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
+                                            Sàn giao dịch NFT với khả năng
+                                            tạo, mua bán và đấu giá tài sản
+                                            kỹ thuật số trên blockchain
+                                            Ethereum.
+                                        </p>
+
+                                        <div class="flex gap-4 pt-2">
+                                            <a href="#"
+                                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                <svg class="w-5 h-5 transition-transform duration-300 group-hover/link:scale-110"
+                                                    viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                                </svg>
+                                                Source Code
+                                            </a>
+                                            <a href="#"
+                                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-all duration-300 group/link">
+                                                <svg class="w-5 h-5 transition-transform duration-300 group-hover/link:rotate-45"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                </svg>
+                                                Live Demo
+                                            </a>
+                                        </div>
+
+                                        <!-- View Details Button -->
+                                        <button class="view-details-btn mt-4 w-full py-2 rounded-lg bg-purple-600/20 text-purple-400 border border-purple-600/30 
+                    hover:bg-purple-600/30 transition-all duration-300 flex items-center justify-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                            Xem chi tiết
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Project Details Modal -->
+                        <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+                            <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-overlay"></div>
+                            <div class="relative bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 z-10 transform transition-all duration-300 scale-95 opacity-0"
+                                id="modal-content">
+                                <!-- Close Button -->
+                                <button id="close-modal"
+                                    class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 rounded-full hover:bg-gray-800/50 transition-all duration-300">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+
+                                <!-- Modal Content -->
+                                <div id="project-details" class="space-y-6">
+                                    <!-- Content will be dynamically inserted here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- JavaScript for Modal Functionality -->
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                // Project data
+                                const projectData = {
+                                    "1": {
+                                        title: "Python CLI",
+                                        description: "Giả lập IDE chạy Python trên web, hỗ trợ xử lý lỗi và hiển thị cho các dòng lệnh cơ bản có tích hợp trò chuyện với AI. Dự án này được phát triển để giúp người học Python có thể thực hành mà không cần cài đặt môi trường phức tạp.",
+                                        image: "https://i.postimg.cc/SKhFj79x/image.png",
+                                        tech: ["HTML/TailwindCSS", "Javascript", "Python", "OpenAI API"],
+                                        features: [
+                                            "Chạy mã Python trực tiếp trên trình duyệt",
+                                            "Hỗ trợ xử lý lỗi và gợi ý sửa lỗi thông minh",
+                                            "Tích hợp AI để giải thích mã và hỗ trợ học tập",
+                                            "Lưu trữ và chia sẻ mã nguồn dễ dàng",
+                                            "Giao diện thân thiện với người dùng mới"
+                                        ],
+                                        github: "https://github.com/tanbaycu",
+                                        demo: "https://python-cli-webapp.vercel.app"
+                                    },
+                                    "2": {
+                                        title: "ChatBot Developer",
+                                        description: "Chat Bot tích hợp AI với nhiều chức năng đa dạng và nổi bật trên các nền tảng Telegram, Discord, Messenger. Dự án này sử dụng các API của OpenAI để cung cấp trải nghiệm trò chuyện tự nhiên và hỗ trợ người dùng trong nhiều tác vụ khác nhau.",
+                                        image: "https://i.postimg.cc/8CYTtgtk/image.png",
+                                        tech: ["Python", "SQLite3", "OpenAI API", "Telegram Bot API", "Discord API"],
+                                        features: [
+                                            "Trò chuyện tự nhiên với AI tiên tiến",
+                                            "Tạo hình ảnh từ mô tả văn bản",
+                                            "Trả lời câu hỏi và cung cấp thông tin",
+                                            "Hỗ trợ đa ngôn ngữ",
+                                            "Lưu trữ lịch sử trò chuyện và tùy chỉnh cá nhân hóa"
+                                        ],
+                                        github: "https://linktr.ee/chatbottelegram",
+                                        demo: "https://t.me/tanbaycu_bot"
+                                    },
+                                    "3": {
+                                        title: "AI Assistant",
+                                        description: "Trợ lý AI thông minh với khả năng chat, phân tích dữ liệu và tạo nội dung tự động sử dụng OpenAI API. Dự án này được xây dựng trên nền tảng web hiện đại, cung cấp giao diện trực quan và khả năng tích hợp với nhiều dịch vụ khác.",
+                                        image: "https://i.postimg.cc/kGm3pJ8C/image.png",
+                                        tech: ["React/Next.js", "OpenAI API", "TailwindCSS", "Vercel AI SDK"],
+                                        features: [
+                                            "Trò chuyện thông minh với AI GPT-4",
+                                            "Phân tích và tóm tắt văn bản dài",
+                                            "Tạo nội dung theo yêu cầu (bài viết, email, mã nguồn)",
+                                            "Tích hợp với các công cụ làm việc phổ biến",
+                                            "Giao diện người dùng hiện đại và dễ sử dụng"
+                                        ],
+                                        github: "#",
+                                        demo: "#"
+                                    },
+                                    "4": {
+                                        title: "E-Commerce Platform",
+                                        description: "Nền tảng thương mại điện tử đầy đủ tính năng với hệ thống thanh toán, quản lý đơn hàng và tích hợp API giao hàng. Dự án này cung cấp giải pháp toàn diện cho các doanh nghiệp muốn mở rộng kinh doanh trực tuyến.",
+                                        image: "https://i.postimg.cc/02KDf9nj/image.png",
+                                        tech: ["PHP/Laravel", "MySQL", "JavaScript", "Stripe API", "Redis"],
+                                        features: [
+                                            "Quản lý sản phẩm và danh mục đa cấp",
+                                            "Hệ thống giỏ hàng và thanh toán an toàn",
+                                            "Quản lý đơn hàng và theo dõi trạng thái",
+                                            "Tích hợp với các cổng thanh toán phổ biến",
+                                            "Hệ thống đánh giá và bình luận sản phẩm",
+                                            "Tối ưu hóa SEO và hiệu suất trang web"
+                                        ],
+                                        github: "#",
+                                        demo: "#"
+                                    },
+                                    "5": {
+                                        title: "Fitness Tracker App",
+                                        description: "Ứng dụng di động theo dõi sức khỏe và tập luyện với tính năng đặt mục tiêu, theo dõi tiến độ và phân tích dữ liệu. Ứng dụng này giúp người dùng duy trì lối sống lành mạnh và đạt được mục tiêu sức khỏe cá nhân.",
+                                        image: "https://i.postimg.cc/QCcPNYRB/mobile-app.jpg",
+                                        tech: ["React Native", "Firebase", "Redux", "Health Kit API", "Google Fit API"],
+                                        features: [
+                                            "Theo dõi hoạt động thể chất hàng ngày",
+                                            "Đặt mục tiêu và nhắc nhở tập luyện",
+                                            "Phân tích dữ liệu sức khỏe theo thời gian",
+                                            "Tích hợp với thiết bị đeo thông minh",
+                                            "Chia sẻ thành tích và kết nối cộng đồng",
+                                            "Chế độ offline và đồng bộ hóa dữ liệu"
+                                        ],
+                                        github: "#",
+                                        demo: "#"
+                                    },
+                                    "6": {
+                                        title: "Data Analytics Dashboard",
+                                        description: "Bảng điều khiển phân tích dữ liệu với biểu đồ tương tác, báo cáo tự động và khả năng xuất dữ liệu đa định dạng. Dự án này cung cấp công cụ trực quan hóa dữ liệu mạnh mẽ cho doanh nghiệp và nhà phân tích.",
+                                        image: "https://i.postimg.cc/d1WrW1gk/image.png",
+                                        tech: ["Python/Django", "D3.js", "PostgreSQL", "Pandas", "Celery"],
+                                        features: [
+                                            "Biểu đồ tương tác và trực quan hóa dữ liệu",
+                                            "Bảng điều khiển tùy chỉnh theo nhu cầu",
+                                            "Báo cáo tự động theo lịch trình",
+                                            "Phân tích xu hướng và dự báo",
+                                            "Xuất dữ liệu đa định dạng (PDF, Excel, CSV)",
+                                            "Quản lý quyền truy cập và bảo mật dữ liệu"
+                                        ],
+                                        github: "#",
+                                        demo: "#"
+                                    },
+                                    "7": {
+                                        title: "NFT Marketplace",
+                                        description: "Sàn giao dịch NFT với khả năng tạo, mua bán và đấu giá tài sản kỹ thuật số trên blockchain Ethereum. Dự án này kết nối nghệ sĩ số và nhà sưu tập trong một hệ sinh thái an toàn và minh bạch.",
+                                        image: "https://i.postimg.cc/DwKJPLmp/image.png",
+                                        tech: ["Solidity", "Web3.js", "React", "IPFS", "Ethereum"],
+                                        features: [
+                                            "Tạo và đúc NFT từ tác phẩm nghệ thuật số",
+                                            "Mua bán NFT với nhiều phương thức thanh toán",
+                                            "Đấu giá NFT với hệ thống đấu giá thông minh",
+                                            "Ví điện tử tích hợp và quản lý tài sản",
+                                            "Xác thực và theo dõi lịch sử giao dịch",
+                                            "Hỗ trợ nhiều chuẩn token và blockchain"
+                                        ],
+                                        github: "#",
+                                        demo: "#"
+                                    }
+                                };
+
+                                // Get all elements
+                                const modal = document.getElementById('project-modal');
+                                const modalContent = document.getElementById('modal-content');
+                                const modalOverlay = document.getElementById('modal-overlay');
+                                const closeModalBtn = document.getElementById('close-modal');
+                                const projectDetails = document.getElementById('project-details');
+                                const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+
+                                // Function to open modal
+                                function openModal(projectId) {
+                                    const project = projectData[projectId];
+
+                                    if (!project) return;
+
+                                    // Populate modal content
+                                    projectDetails.innerHTML = `
+                <div class="relative overflow-hidden rounded-xl mb-6">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-auto object-cover rounded-xl">
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-3xl font-bold text-purple-400 mb-2">${project.title}</h2>
+                        <p class="text-gray-300 leading-relaxed">${project.description}</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Công nghệ sử dụng</h3>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.tech.map(tech => `
+                                <span class="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-sm font-medium text-purple-300 border border-purple-500/20">
+                                    ${tech}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Tính năng chính</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            ${project.features.map(feature => `
+                                <li class="flex items-start gap-2">
+                                    <svg class="w-5 h-5 text-purple-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>${feature}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="${project.github}" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-all duration-300 flex items-center gap-2">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            Mã nguồn
+                        </a>
+                        <a href="${project.demo}" class="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-all duration-300 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                            Xem Demo
+                        </a>
+                    </div>
+                </div>
+            `;
+
+                                    // Show modal with animation
+                                    modal.classList.remove('hidden');
+                                    setTimeout(() => {
+                                        modalContent.classList.remove('scale-95', 'opacity-0');
+                                        modalContent.classList.add('scale-100', 'opacity-100');
+                                    }, 10);
+                                }
+
+                                // Function to close modal
+                                function closeModal() {
+                                    modalContent.classList.remove('scale-100', 'opacity-100');
+                                    modalContent.classList.add('scale-95', 'opacity-0');
+
+                                    setTimeout(() => {
+                                        modal.classList.add('hidden');
+                                    }, 300);
+                                }
+
+                                // Add event listeners
+                                viewDetailsBtns.forEach(btn => {
+                                    btn.addEventListener('click', function () {
+                                        const projectItem = this.closest('.project-item');
+                                        const projectId = projectItem.dataset.projectId;
+                                        openModal(projectId);
+                                    });
+                                });
+
+                                closeModalBtn.addEventListener('click', closeModal);
+                                modalOverlay.addEventListener('click', closeModal);
+
+                                // Close modal with Escape key
+                                document.addEventListener('keydown', function (e) {
+                                    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                                        closeModal();
+                                    }
+                                });
+
+                                // Prevent closing when clicking inside modal content
+                                modalContent.addEventListener('click', function (e) {
+                                    e.stopPropagation();
+                                });
+                            });
+                        </script>
                     </div>
                 </section>
 
@@ -2132,51 +2998,9 @@
                 particle.remove();
             }, 1000);
         }
-        function setupMobileMenu() {
-            const menuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
 
-            function toggleMenu() {
-                const isOpen = mobileMenu.classList.contains('menu-open');
 
-                // Toggle menu state
-                mobileMenu.classList.toggle('menu-open');
-                document.body.classList.toggle('menu-open');
-                menuBtn.setAttribute('aria-expanded', !isOpen);
 
-                // Update menu button icon
-                menuBtn.innerHTML = isOpen
-                    ? '<i class="ph ph-list text-2xl text-gray-300"></i>'
-                    : '<i class="ph ph-x text-2xl text-gray-300"></i>';
-            }
-
-            // Toggle menu on button click
-            menuBtn.addEventListener('click', toggleMenu);
-
-            // Close menu when clicking a link
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    toggleMenu();
-
-                    // Smooth scroll to section
-                    const href = link.getAttribute('href');
-                    if (href.startsWith('#')) {
-                        const element = document.querySelector(href);
-                        if (element) {
-                            element.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }
-                });
-            });
-
-            // Close menu on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && mobileMenu.classList.contains('menu-open')) {
-                    toggleMenu();
-                }
-            });
-        }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
